@@ -51,13 +51,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // تبديل قائمة التنقل المتجاوبة
-    const menuToggle = document.querySelector('.menu-toggle');
+    const menuButton = document.querySelector('.mobile-menu-button');
     const mainNavigation = document.querySelector('.main-navigation');
     
-    if (menuToggle && mainNavigation) {
-        menuToggle.addEventListener('click', function() {
+    if (menuButton && mainNavigation) {
+        menuButton.addEventListener('click', function() {
             mainNavigation.classList.toggle('active');
-            menuToggle.classList.toggle('active');
+            menuButton.classList.toggle('active');
+        });
+
+        // إغلاق القائمة عند النقر خارجها
+        document.addEventListener('click', function(event) {
+            if (!mainNavigation.contains(event.target) && !menuButton.contains(event.target) && mainNavigation.classList.contains('active')) {
+                mainNavigation.classList.remove('active');
+                menuButton.classList.remove('active');
+            }
+        });
+
+        // إغلاق القائمة عند النقر على أي رابط فيها
+        mainNavigation.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                mainNavigation.classList.remove('active');
+                menuButton.classList.remove('active');
+            });
         });
     }
     
