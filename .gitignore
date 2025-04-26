@@ -1,0 +1,19 @@
+# ملفات النظام
+.DS_Store
+Thumbs.db
+
+# ملفات المحرر
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ملفات مؤقتة
+*.log
+*.tmp
+tmp/
+temp/
+
+# ملفات شخصية
+.env
+.env.local
